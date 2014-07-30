@@ -57,11 +57,11 @@ mute.onclick = function() {
   if(mute.getAttribute('data-muted') === 'false') {
     gainNode.disconnect(audioCtx.destination);
     mute.setAttribute('data-muted', 'true');
-    mute.innerHTML = "Unmute";
+    mute.innerHTML = "<span class='glyphicon glyphicon-play'></span><p>Unmute</p>";
   } else {
     gainNode.connect(audioCtx.destination);
     mute.setAttribute('data-muted', 'false');
-    mute.innerHTML = "Mute";
+    mute.innerHTML = "<span class='glyphicon glyphicon-pause'></span><p>Mute</p>";
   };
 }
 
