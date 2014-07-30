@@ -28,7 +28,7 @@ var initialVol = 0;
 
 // set options for the oscillator
 
-oscillator.type = 1; // square wave
+oscillator.type = 0; // square wave
 oscillator.frequency.value = initialFreq; // value in hertz
 oscillator.start();
 
@@ -44,7 +44,7 @@ var CurY;
 document.addEventListener("headtrackingEvent", function(e) {
     KeyFlag = false;
     HeadX = Math.abs(e.x + 40)*10;
-    HeadY = Math.abs(e.y + 10)*2;
+    HeadY = Math.abs(e.y + 10)*3;
     oscillator.frequency.value = (HeadX/WIDTH) * maxFreq;
     gainNode.gain.value = (HeadY/HEIGHT) * maxVol;
     // console.log(HeadX, HeadY)
