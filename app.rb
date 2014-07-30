@@ -6,7 +6,7 @@ Dir.glob('./lib/*.rb') do |model|
 end
 
 module Name
-  class App < Sinatra::Application
+  class Synthhead < Sinatra::Application
 
     #configure
     configure do
