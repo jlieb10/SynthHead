@@ -20,10 +20,10 @@ var WIDTH = window.innerWidth;
 var HEIGHT = window.innerHeight;
 
 // create initial theremin frequency and volumn values
-var maxFreq = 6000;
+var maxFreq = 3000;
 var maxVol = 1;
 
-var initialFreq = 3000;
+var initialFreq = 300;
 var initialVol = 0;
 
 // set options for the oscillator
@@ -37,14 +37,17 @@ gainNode.gain.value = initialVol;
 // Estimated head coordinates
 var HeadX;
 var HeadY;
+var CurX;
+var CurY;
 
 // Change vals as head moves
 document.addEventListener("headtrackingEvent", function(e) {
     KeyFlag = false;
-    HeadX = e.x*20;
-    HeadY = -e.y*20;
+    HeadX = Math.abs(e.x + 40)*10;
+    HeadY = Math.abs(e.y + 10)*2;
     oscillator.frequency.value = (HeadX/WIDTH) * maxFreq;
     gainNode.gain.value = (HeadY/HEIGHT) * maxVol;
+    // console.log(HeadX, HeadY)
 }, false);
 
 // Mute button
@@ -61,3 +64,17 @@ mute.onclick = function() {
     mute.innerHTML = "Mute";
   };
 }
+
+document.onmousemove = updatePage;
+
+// function updatePage(e) {
+//     KeyFlag = false;
+
+//     CurX = (window.Event) ? e.pageX : event.clientX + (document.documentElement.scrollLeft ? document.documentElement.scrollLeft : document.body.scrollLeft);
+//     CurY = (window.Event) ? e.pageY : event.clientY + (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
+
+//     oscillator.frequency.value = (CurX/WIDTH) * maxFreq;
+//     gainNode.gain.value = (CurY/HEIGHT) * maxVol;
+
+//     console.log(CurX, CurY);
+// }
