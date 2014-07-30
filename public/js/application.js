@@ -26,7 +26,7 @@ var maxFreq = 6000;
 var maxVol = 1;
 
 var initialFreq = 3000;
-var initialVol = 0.5;
+var initialVol = 0;
 
 // set options for the oscillator
 
@@ -47,8 +47,6 @@ document.addEventListener("headtrackingEvent", function(e) {
     CurY = -e.y*20;
     oscillator.frequency.value = (CurX/WIDTH) * maxFreq;
     gainNode.gain.value = (CurY/HEIGHT) * maxVol;
-
-    // console.log(mouseX, mouseY)
 }, false);
 
 
@@ -71,16 +69,16 @@ document.addEventListener("headtrackingEvent", function(e) {
 
 // mute button
 
-// var mute = document.querySelector('.mute');
+var mute = document.querySelector('.mute');
 
-// mute.onclick = function() {
-//   if(mute.getAttribute('data-muted') === 'false') {
-//     gainNode.disconnect(audioCtx.destination);
-//     mute.setAttribute('data-muted', 'true');
-//     mute.innerHTML = "Unmute";
-//   } else {
-//     gainNode.connect(audioCtx.destination);
-//     mute.setAttribute('data-muted', 'false');
-//     mute.innerHTML = "Mute";
-//   };
-// }
+mute.onclick = function() {
+  if(mute.getAttribute('data-muted') === 'false') {
+    gainNode.disconnect(audioCtx.destination);
+    mute.setAttribute('data-muted', 'true');
+    mute.innerHTML = "Unmute";
+  } else {
+    gainNode.connect(audioCtx.destination);
+    mute.setAttribute('data-muted', 'false');
+    mute.innerHTML = "Mute";
+  };
+}
