@@ -65,7 +65,7 @@ mute.onclick = function() {
   };
 }
 
-document.onmousemove = updatePage;
+// document.onmousemove = updatePage;
 
 // function updatePage(e) {
 //     KeyFlag = false;
